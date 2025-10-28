@@ -8,12 +8,26 @@ For any other file format lychee falls back to a "plain text" mode.
 This means that [linkify](https://github.com/robinst/linkify) attempts to extract URLs on a best-effort basis.
 If invalid UTF-8 characters are encountered the input file is skipped.
 
+# Preprocess files
+
+lychee allows file preprocessing with the `--pre` flag.
+For each input file the command specified with `--pre` is invoked instead of reading the input file directly.
+In the following there are examples how to preprocess common file formats.
+In most cases it's necessary to create a helper script for preprocessing,
+as no parameters can be supplied from the CLI directly.
+
+```bash
+lychee files/* --pre ./script.sh
+```
+
+Take a look at [script.sh](./script.sh) to see how this is done.
+
 # Converting file formats
 
 ## epub, odt, docx, ipynb
 
 ```bash
-pandoc files/output.docx --to=html --wrap=none --markdown-headings=atx
+pandoc "$1" --to=html --wrap=none --markdown-headings=atx
 ```
 
 ## PDF
