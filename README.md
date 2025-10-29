@@ -24,12 +24,28 @@ Take a look at [script.sh](./script.sh) to see how this is done.
 
 # Converting file formats
 
-## epub, odt, docx, ipynb
+## epub, docx, odt, xlsx, ipynb
 
 pandoc is a powerful conversion tool which allows us to convert many file types into HTML.
 
 ```bash
 pandoc "$1" --to=html --wrap=none --markdown-headings=atx
+```
+
+## odp, pptx, ods, xlsx
+
+LibreOffice can convert documents to various formats.
+Unfortunately, it does not support printing the result to stdout directly as of 2025,
+as the `--cat` option is not compatible with `--convert-to`.
+This makes usage a bit clumsy.
+Additionally, LibreOffice includes URLs in the head which we discard with `sed`.
+
+```bash
+libreoffice --headless --convert-to html "$1" --outdir /tmp
+file=$(basename "$1")
+file="/tmp/${file%.*}.html"
+sed '/<body/,$!d' "$file" # discard content before body which contains libreoffice URLs
+rm "$file"
 ```
 
 ## AsciiDoc

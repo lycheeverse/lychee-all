@@ -7,9 +7,18 @@ case "$1" in
     # exec pdftohtml -s "$1" -stdout
     # exec pdftk "$1" output - uncompress | grep -aPo '/URI *\(\K[^)]*'
     ;;
-*.epub|*.odt|*.docx|*.ipynb)
+*.odt|*.docx| \
+*.epub|*.ipynb)
     exec pandoc "$1" --to=html --wrap=none --markdown-headings=atx
     ;;
+*.odp|*.pptx|*.ods|*.xlsx)
+    # libreoffice can't print to stdout unfortunately
+    libreoffice --headless --convert-to html "$1" --outdir /tmp
+    file=$(basename "$1")
+    file="/tmp/${file%.*}.html"
+    sed '/<body/,$!d' "$file" # discard content before body which contains libreoffice URLs
+    rm "$file"
+;;
 *.adoc|*.asciidoc)
     asciidoctor -a stylesheet! "$1" -o -
     ;;
