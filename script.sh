@@ -2,9 +2,9 @@
 
 case "$1" in
 *.pdf)
-    exec pdftotext "$1" -
+    exec pdftohtml -i -s -stdout "$1"
     # Alternatives:
-    # exec pdftohtml -s "$1" -stdout
+    # exec pdftotext "$1" -
     # exec pdftk "$1" output - uncompress | grep -aPo '/URI *\(\K[^)]*'
     ;;
 *.odt|*.docx| \

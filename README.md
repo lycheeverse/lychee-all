@@ -59,11 +59,13 @@ asciidoctor -a stylesheet! "$1" -o -
 
 ## PDF
 
-Using poppler-utils we can convert PDFs to text or HTML:
+Using poppler-utils we can convert PDFs to HTML:
 
 ```bash
+pdftohtml -i -s -stdout "$1"
+
+# or to text
 pdftotext "$1" -
-pdftohtml -s "$1" -stdout
 ```
 
 Alternatively, pdftk can be used to extract URI directives from PDFs.
