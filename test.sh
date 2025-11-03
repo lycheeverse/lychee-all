@@ -1,6 +1,8 @@
 #! /usr/bin/env nix-shell
 #! nix-shell -p bash poppler-utils pdftk pandoc csvtk asciidoctor libreoffice -i bash --pure
 
+set -euo pipefail
+
 log_failure() {
   printf "✖ %s\n" "$@" >&2
 }
