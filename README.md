@@ -17,10 +17,10 @@ In most cases it's necessary to create a helper script for preprocessing,
 as no parameters can be supplied from the CLI directly.
 
 ```bash
-lychee files/* --preprocess ./script.sh
+lychee files/* --preprocess ./preprocess.sh
 ```
 
-Take a look at [script.sh](./script.sh) to see how this is done.
+Take a look at [preprocess.sh](./preprocess.sh) to see how this is done.
 
 # Converting file formats
 
