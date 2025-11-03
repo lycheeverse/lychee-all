@@ -4,3 +4,7 @@ J. Smith
 https://en.wikipedia.org/wiki/AsciiDoc[Wikipedia]
 is an on-line encyclopedia, available in
 English and *many* other languages.
+
+The homepage for the Asciidoctor Project is https://www.asciidoctor.org.
+
+Some inline links <https://docs.asciidoctor.org/asciidoc/latest>.

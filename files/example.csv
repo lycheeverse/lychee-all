@@ -1,3 +1,4 @@
 url,name
 https://github.com/lycheeverse/lychee,Hello there
 https://www.wikipedia.org,This is a new cell
+https://rust-lang.org/,The comma is not part of the URL!
