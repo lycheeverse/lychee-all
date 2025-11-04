@@ -52,7 +52,7 @@ rm "$file"
 ## AsciiDoc
 
 Using [asciidoctor] we can convert AsciiDoc to HTML.
-This ensures that URLs are properly interpreted.
+We use `-a stylesheet!` to disable generation of stylesheets and associated URLs.
 
 ```bash
 asciidoctor -a stylesheet! "$1" -o -
