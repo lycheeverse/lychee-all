@@ -7,8 +7,7 @@ case "$1" in
     # exec pdftotext "$1" -
     # exec pdftk "$1" output - uncompress | grep -aPo '/URI *\(\K[^)]*'
     ;;
-*.odt|*.docx| \
-*.epub|*.ipynb)
+*.odt|*.docx|*.epub|*.ipynb)
     exec pandoc "$1" --to=html --wrap=none --markdown-headings=atx
     ;;
 *.odp|*.pptx|*.ods|*.xlsx)
